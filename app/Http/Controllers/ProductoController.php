@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 use Auth;
+use App\Http\Requests\ProductoRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductoController extends Controller
 {
@@ -29,9 +31,9 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(){
+
+       return view('productos.create');
     }
 
     /**
@@ -40,9 +42,9 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(ProductoRequest $request){
+        Producto::create($request->all());
+        return Redirect::to('productos')->with('success', 'Producto creado');
     }
 
     /**
@@ -87,6 +89,7 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Producto::destroy($id);
+        return Redirect::to('productos');
     }
 }

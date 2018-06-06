@@ -19,7 +19,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('clientes',function(){
         return view('clientes.index');
     });
-    Route::resource('productos','ProductoController');
+    Route::resource('productos','ProductoController',['except'=>['show']]);
     Route::get('clientes/create/{numero}/{letra}',function($numero,$letra){
         return view('clientes.create',compact('numero','letra'));
     })->where('numero','[0-9]+');
