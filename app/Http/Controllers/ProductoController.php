@@ -52,9 +52,10 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        //$prod=Producto::findOrFail($id);
+        $prod=Producto::where('stockproducto','>',50)->get();
+        return response()->json($prod);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+     $this->validarCodigo();   
     }
 
     /**
@@ -24,5 +25,12 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    private function validarCodigo(){
+        Validator::extend('codigo_producto',function($attribute,$value,$parameters){
+            // 10005-2000-3000
+            return preg_match('/0[0-9]{8}/',$value);
+        });
     }
 }

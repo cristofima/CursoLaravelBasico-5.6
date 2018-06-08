@@ -22,6 +22,7 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Stock</th>
                                         <th scope="col">Precio</th>
+                                        <th scope="col">Código</th>
                                         <th scope="col">Opciones</th>
                                     </tr>
                                 </thead>
@@ -30,9 +31,11 @@
                                     <td>{{$prod->nombreproducto}}</td>
                                     <td>{{$prod->stockproducto}}</td>
                                     <td>{{$prod->precioproducto}}</td>
+                                    <td>{{$prod->codigoproducto}}</td>
                                     <td>
                                         <a class="btn btn-info" href="{{route('productos.edit',$prod->idproducto)}}">Editar</a>
-                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" data-name="{{$prod->nombreproducto}}"
+                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" 
+                                        data-name="{{$prod->nombreproducto}}"
                                         data-action="{{route('productos.destroy',$prod->idproducto)}}">Eliminar</a>
                                     </td>
                                 </tr>

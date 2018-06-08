@@ -12,9 +12,10 @@ class Producto extends Model
 
     const CREATED_AT = 'fecha';
 
-    //protected $guarded=[];
     protected $fillable=['nombreproducto','stockproducto','precioproducto',
-'idusuario'];
+'idusuario','codigoproducto'];
+
+    protected $hidden=['codigoproducto'];
 
     public function usuario(){
         return $this->belongsTo('App\User','idusuario');

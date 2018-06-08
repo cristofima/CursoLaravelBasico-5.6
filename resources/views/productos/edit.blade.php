@@ -19,10 +19,12 @@
                 <div class="panel-body">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     {!! Form::open(['route' => ['productos.update', $prod->idproducto],'method' => 'PATCH']) !!}
-                        <input type="text" name="nombreproducto" value="{{$prod->nombreproducto}}"/>
-                        <input type="number" name="stockproducto" value="{{$prod->stockproducto}}"/>
-                        <input type="number" step="0.01" name="precioproducto" value="{{$prod->precioproducto}}"/>
-                        <input type="hidden" name="idusuario" value="{{$prod->idusuario}}"/>
+                        <input type="text" name="nombreproducto" value="{{$prod->nombreproducto}}"/><br/>
+                        <input type="number" name="stockproducto" value="{{$prod->stockproducto}}"/><br/>
+                        <input type="number" step="0.01" name="precioproducto" value="{{$prod->precioproducto}}"/><br/>
+                        <input type="hidden" name="idusuario" value="{{$prod->idusuario}}"/><br/>
+                        <input type="hidden" name="idproducto" value="{{$prod->idproducto}}"/><br/>
+                        <input type="text" name="codigoproducto" value="{{$prod->codigoproducto}}"/><br/>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                     </div>

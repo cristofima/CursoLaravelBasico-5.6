@@ -23,11 +23,23 @@ class ProductoRequest extends FormRequest
      * @return array
      */
     public function rules(){
-        return [
-            'nombreproducto'=>'required | string | max:10',
-            'stockproducto'=>'required | numeric |min:0',
-            'precioproducto'=>'required | numeric |min:0.01',
-            'idusuario'=>'required | exists:users,id'
-        ];
+        if(Input::has('idproducto')){
+            $id=Input::get('idproducto');
+            return [
+                'nombreproducto'=>'required | string | max:10',
+                'stockproducto'=>'required | numeric |min:0',
+                'precioproducto'=>'required | numeric |min:0.01',
+                'idusuario'=>'required | exists:users,id',
+                'codigoproducto'=>'required |codigo_producto |string | unique:productos,codigoproducto,'.$id.',idproducto'
+            ];
+        }else{
+            return [
+                'nombreproducto'=>'required | string | max:10',
+                'stockproducto'=>'required | numeric |min:0',
+                'precioproducto'=>'required | numeric |min:0.01',
+                'idusuario'=>'required | exists:users,id',
+                'codigoproducto'=>'required |codigo_producto |string | size:15 | unique:productos'
+            ];
+        }
     }
 }
