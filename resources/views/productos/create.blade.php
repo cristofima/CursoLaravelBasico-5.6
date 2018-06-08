@@ -18,8 +18,7 @@
                 <div class="panel-heading">Registrar producto</div>
                 <div class="panel-body">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <form method="POST" action="{{ url('productos') }}">
-                        @csrf
+                    {!! Form::open(['url' => 'productos']) !!}
                         <input type="text" name="nombreproducto" value="{{old('nombreproducto')}}"/>
                         <input type="number" name="stockproducto" value="{{old('stockproducto')}}"/>
                         <input type="number" step="0.01" name="precioproducto" value="{{old('precioproducto')}}"/>

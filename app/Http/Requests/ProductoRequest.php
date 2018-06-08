@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Input;
 
 class ProductoRequest extends FormRequest
 {
@@ -21,13 +22,12 @@ class ProductoRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules(){
         return [
-            'nombreproducto'=>'required',
-            'stockproducto'=>'required',
-            'precioproducto'=>'required',
-            'idusuario'=>'required'
+            'nombreproducto'=>'required | string | max:10',
+            'stockproducto'=>'required | numeric |min:0',
+            'precioproducto'=>'required | numeric |min:0.01',
+            'idusuario'=>'required | exists:users,id'
         ];
     }
 }

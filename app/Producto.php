@@ -8,7 +8,10 @@ class Producto extends Model
 {
     protected $table="productos";
     protected $primaryKey="idproducto";
-    public $timestamps=false;
+    public $timestamps=true;
+
+    const CREATED_AT = 'fecha';
+
     //protected $guarded=[];
     protected $fillable=['nombreproducto','stockproducto','precioproducto',
 'idusuario'];

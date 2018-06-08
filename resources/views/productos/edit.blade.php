@@ -23,7 +23,6 @@
                         <input type="number" name="stockproducto" value="{{$prod->stockproducto}}"/>
                         <input type="number" step="0.01" name="precioproducto" value="{{$prod->precioproducto}}"/>
                         <input type="hidden" name="idusuario" value="{{$prod->idusuario}}"/>
-                        <input type="hidden" name="idproducto" value="{{$prod->idproducto}}"/>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                     </div>

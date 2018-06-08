@@ -32,7 +32,6 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-
        return view('productos.create');
     }
 
@@ -64,9 +63,9 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $prod=Producto::findOrFail($id);
+        return view('productos.edit',compact('prod'));
     }
 
     /**
@@ -76,9 +75,9 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(ProductoRequest $request, $id){
+        Producto::updateOrCreate(['idproducto'=>$id],$request->all());
+        return Redirect::to('productos')->with('success', 'Producto actualizado');
     }
 
     /**
@@ -87,9 +86,8 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         Producto::destroy($id);
-        return Redirect::to('productos');
+        return Redirect::to('productos')->with('success', 'Producto eliminado');
     }
 }

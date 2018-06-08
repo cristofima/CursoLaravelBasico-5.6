@@ -8,6 +8,7 @@
         </div>
     </div>
     @include('includes.mensajes')
+    @include('productos.delete')
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -31,7 +32,8 @@
                                     <td>{{$prod->precioproducto}}</td>
                                     <td>
                                         <a class="btn btn-info" href="{{route('productos.edit',$prod->idproducto)}}">Editar</a>
-                                        <a class="btn btn-danger" href="{{route('productos.destroy',$prod->idproducto)}}">Eliminar</a>
+                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" data-name="{{$prod->nombreproducto}}"
+                                        data-action="{{route('productos.destroy',$prod->idproducto)}}">Eliminar</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -44,5 +46,17 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#modalDelete').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var action = button.data('action');
+            var name = button.data('name');
+            var modal = $(this);
+            modal.find(".modal-content #txtEliminar").text("¿Está seguro de eliminar el producto " + name + "?");
+            modal.find(".modal-content form").attr('action', action);
+        });
+    });
+</script>
 @endsection
