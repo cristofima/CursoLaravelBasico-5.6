@@ -45,15 +45,20 @@ class AppServiceProvider extends ServiceProvider
             }
         });
         Producto::updating(function ($prod) {
-            if(Input::hasFile('imagen') && $prod->imagen!=null){
-                $image = Input::file('imagen');
-                $prod->imagen=base64_encode(file_get_contents($image->getRealPath()));
-                $prod->mimetype= $image->getMimeType();
-            }else if(Input::has('idproducto')){
+            if(Input::has('idproducto')){
                 $id=Input::get('idproducto');
                 $producto=Producto::findOrFail($id);
-                $prod->imagen=$producto->imagen;
-                $prod->mimetype= $producto->mimetype;
+
+                if(Input::hasFile('imagen') && $prod->imagen!=null){
+                    $image = Input::file('imagen');
+                    if($image!=null){
+                        $prod->imagen=base64_encode(file_get_contents($image->getRealPath()));
+                        $prod->mimetype= $image->getMimeType();
+                    }
+                }else{
+                    $prod->imagen=stream_get_contents($producto->imagen);
+                    $prod->mimetype= $producto->mimetype;
+                }
             }
         });
     }
