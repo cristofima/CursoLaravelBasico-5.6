@@ -13,7 +13,7 @@ class Producto extends Model
     const CREATED_AT = 'fecha';
 
     protected $fillable=['nombreproducto','stockproducto','precioproducto',
-'idusuario','codigoproducto'];
+'idusuario','codigoproducto','mimetype','imagen'];
 
     protected $hidden=['codigoproducto'];
 

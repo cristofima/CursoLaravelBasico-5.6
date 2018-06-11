@@ -23,6 +23,7 @@
                                         <th scope="col">Stock</th>
                                         <th scope="col">Precio</th>
                                         <th scope="col">Código</th>
+                                        <th scope="col">Imagen</th>
                                         <th scope="col">Opciones</th>
                                     </tr>
                                 </thead>
@@ -32,6 +33,13 @@
                                     <td>{{$prod->stockproducto}}</td>
                                     <td>{{$prod->precioproducto}}</td>
                                     <td>{{$prod->codigoproducto}}</td>
+                                    <td>
+                                        @if($prod->imagen!=null)
+                                        <img src="data:{{$prod->mimetype}};base64,{{stream_get_contents($prod->imagen)}}" alt="Imagen" style="max-width: 75px;max-height: 75px;"/>
+                                        @else
+                                            {{'No hay imagen'}}
+                                        @endif
+                                    </td>
                                     <td>
                                         <a class="btn btn-info" href="{{route('productos.edit',$prod->idproducto)}}">Editar</a>
                                         <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" 
