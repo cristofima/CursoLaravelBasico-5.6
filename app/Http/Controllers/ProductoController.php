@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Redirect;
 class ProductoController extends Controller
 {
 
-    public function __construct(){
-        //$this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -53,8 +49,14 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        //$prod=Producto::findOrFail($id);
-        $prod=Producto::where('stockproducto','>',50)->get();
+        $prod=Producto::select("idproducto","nombreproducto","stockproducto",
+        "precioproducto","codigoproducto")->findOrFail($id);
+        return response()->json($prod);
+    }
+
+    public function listJSON(){
+        $prod=Producto::select("idproducto","nombreproducto","stockproducto",
+         "precioproducto","codigoproducto")->where('stockproducto','>',50)->get();
         return response()->json($prod);
     }
 

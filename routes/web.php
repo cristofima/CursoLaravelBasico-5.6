@@ -25,5 +25,5 @@ Route::group(['middleware'=>'auth'],function(){
     })->where('numero','[0-9]+');
 });
 Auth::routes();
-
+Route::get('productos-listar','ProductoController@listJSON')->middleware('BasicAuth');
 Route::get('/home', 'HomeController@index')->name('home');
