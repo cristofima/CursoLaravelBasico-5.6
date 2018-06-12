@@ -43,7 +43,7 @@
                                     <td>
                                         <a class="btn btn-info" href="{{route('productos.edit',$prod->idproducto)}}">Editar</a>
                                         <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" 
-                                        data-name="{{$prod->nombreproducto}}"
+                                        data-name="{{$prod->nombreproducto}}" href="#"
                                         data-action="{{route('productos.destroy',$prod->idproducto)}}">Eliminar</a>
                                     </td>
                                 </tr>

@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Validator;
 use App\Producto;
 use Input;
+use Mail;
+use App\Mail\ProductoEmail;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
     }
 
     private function eventosModelos(){
+        Producto::deleted(function ($prod) {
+            $emails=['xxxxxx@hotmail.com'];
+            Mail::to($emails)->send(new ProductoEmail($prod));
+        });
         Producto::creating(function ($prod) {
             if(Input::hasFile('imagen')){
                 $image = Input::file('imagen');

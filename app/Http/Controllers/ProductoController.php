@@ -17,7 +17,7 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $productos=Auth::user()->productos()->paginate(10);
         return view('productos.index',compact('productos'));
     }
@@ -28,6 +28,7 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
+       // $lista=Producto::all();
        return view('productos.create');
     }
 
@@ -56,7 +57,7 @@ class ProductoController extends Controller
 
     public function listJSON(){
         $prod=Producto::select("idproducto","nombreproducto","stockproducto",
-         "precioproducto","codigoproducto")->where('stockproducto','>',50)->get();
+         "precioproducto","codigoproducto")->get();
         return response()->json($prod);
     }
 

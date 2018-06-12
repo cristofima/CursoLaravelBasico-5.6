@@ -26,6 +26,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/productos';
+    protected $maxAttempts = 3; // Amount of bad attempts user can make
 
     /**
      * Create a new controller instance.
