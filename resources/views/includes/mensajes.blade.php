@@ -1,20 +1,18 @@
 @if ($message = Session::get('success'))
-    <div class="row">
-        <div class="alert alert-success">
-            <p>
-                <strong>{{ $message }}</strong>
-            </p>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    </div>
     @endif
 @if(count($errors)>0)
     @foreach($errors->all() as $error)
-    <div class="row">
-        <div class="alert alert-danger">
-            <p>
-                <strong>{{ $error }}</strong>
-            </p>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ $error }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    </div>
     @endforeach
 @endif
